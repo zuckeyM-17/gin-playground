@@ -3,12 +3,14 @@ package main
 import (
 	"net/http"
 
+	"app/renderer"
+
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*.html")
+	r.HTMLRender = renderer.CreateRenderer()
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "this is title",
