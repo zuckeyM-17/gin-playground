@@ -1,4 +1,4 @@
-module gin-playground
+module github.com/zuckeyM-17/gin-playground
 
 go 1.15
 
