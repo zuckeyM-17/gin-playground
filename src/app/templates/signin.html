@@ -1,18 +1,11 @@
 {{define "content"}}
+
 <h2>{{ .title }}</h2>
-<p>ログインページ</p>
+<div id="app">
+  <p>[[ message ]]</p>
+  <button @click="signIn">ログイン</button>
+</div>
 
-<button id="signIn">ログイン</button>
-
-<script>
-  const button = document.getElementById("signIn")
-
-  const csfrToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-  button.addEventListener("click", () => {
-    axios.post('/api/sign_in', {},
-      { headers: { 'X-CSRF-TOKEN': csfrToken }, }
-    )
-  })
-</script>
+<script type="text/javascript" src="/assets/javascripts/signIn.js"></script>
 
 {{end}}

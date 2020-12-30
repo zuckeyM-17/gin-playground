@@ -13,6 +13,8 @@ func main() {
 	r.Use(middleware.SessionStore())
 	r.Use(middleware.CsrfProtection())
 
+	r.Static("/assets", "./assets")
+
 	r.HTMLRender = renderer.CreateRenderer()
 	routes.RegisterRoutes(r)
 	r.Run(":1234")
