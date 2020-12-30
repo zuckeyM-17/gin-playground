@@ -8,8 +8,8 @@ import (
 
 func apiRoutes(r *gin.Engine) {
 
-	auth := r.Group("/auth")
-	auth.GET("/", func(c *gin.Context) {
+	api := r.Group("/api")
+	api.POST("/sign_in", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "OK",
 		})

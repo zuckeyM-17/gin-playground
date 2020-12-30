@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	csrf "github.com/utrack/gin-csrf"
 )
 
 func indexRoutes(r *gin.Engine) {
@@ -13,12 +14,14 @@ func indexRoutes(r *gin.Engine) {
 
 func getIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
-		"title": "this is title",
+		"csrfToken": csrf.GetToken(c),
+		"title":     "this is title",
 	})
 }
 
 func getSignin(c *gin.Context) {
 	c.HTML(http.StatusOK, "signin.html", gin.H{
-		"title": "this is sign_in page",
+		"csrfToken": csrf.GetToken(c),
+		"title":     "this is sign_in page",
 	})
 }
